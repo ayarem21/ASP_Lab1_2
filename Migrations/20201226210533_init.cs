@@ -2,7 +2,7 @@
 
 namespace lab1_2.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,8 @@ namespace lab1_2.Migrations
                 columns: table => new
                 {
                     AlbumId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -24,8 +25,9 @@ namespace lab1_2.Migrations
                 {
                     ArtId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    imagePath = table.Column<string>(nullable: true),
-                    AlbumId = table.Column<int>(nullable: true)
+                    ImagePath = table.Column<string>(nullable: true),
+                    AlbumId = table.Column<int>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,7 +37,7 @@ namespace lab1_2.Migrations
                         column: x => x.AlbumId,
                         principalTable: "Album",
                         principalColumn: "AlbumId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

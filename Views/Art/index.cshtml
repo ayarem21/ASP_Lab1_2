@@ -1,15 +1,9 @@
-<form method="post">
-    <img src="https://sites.google.com/site/sucasnemistectvo2014/_/rsrc/1395393848427/napramki-sucasnogo-mistectva/%D0%B0%D0%B1%D1%81%D1%82%D1%80%D0%B0%D0%BA.jpg"><br />
-    <input name="straight" type="radio" value="Абстрактний експресіонізм" />
-    <label>Абстрактний експресіонізм</label> <br />
-    <img src="https://sites.google.com/site/sucasnemistectvo2014/_/rsrc/1395394042401/napramki-sucasnogo-mistectva/%D0%BA%D0%BE%D0%BD%D1%86%D0%B5%D0%BF%D1%82.jpg"><br />
-    <input name="straight" type="radio" value="Концептуальне мистецтво" />
-    <label>Концептуальне мистецтво</label> <br />
-    <img src="https://sites.google.com/site/sucasnemistectvo2014/_/rsrc/1395394124581/napramki-sucasnogo-mistectva/%D1%81%D1%82%D1%80%D0%B8%D1%82.jpg"><br />
-    <input checked="checked" name="straight" type="radio" value="Стріт-арт" />
-    <span>Стріт-арт</span>
-     
-    <p>
-        <input type="submit" value="Отправить" />
-    </p>
-</form>
+@model IEnumerable<ArtsNamespace.Models.Album>
+
+@foreach (var item in Model)
+{
+    <div>
+        @item.AlbumId
+        <hr />
+    </div>
+}

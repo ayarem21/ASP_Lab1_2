@@ -1,0 +1,13 @@
+@model IEnumerable<ArtsNamespace.Models.Album>
+
+@foreach (var album in Model)
+{
+    <div>
+        @Html.ActionLink(album.Name, "GetById", "Album", new { id = album.AlbumId});
+        <hr />
+    </div>
+}
+<form action="Album/AddForm" method="get">
+    <input type="submit" value="Add album" />
+</form>
+

@@ -5,17 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using lab1_2.Models;
+using ArtsNamespace.Models;
 
-namespace lab1_3.Controllers
+namespace lab1_2.Controllers
 {
     public class ArtController : Controller
     {
-
+        ArtDbContext _context;
+        public ArtController(ArtDbContext context) {
+            _context = context;
+        }
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var Albums = _context.Album.ToList();
+
+            return View(Albums);
         }
         [HttpPost]
         public IActionResult Index(string straight)

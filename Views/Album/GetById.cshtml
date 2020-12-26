@@ -14,19 +14,25 @@
 @foreach (var art in Model)
 {
     <div>
-        @Html.Label(art.ImagePath, art.ImagePath)
+        <label style="font-weight: bold;">@art.Name:</label>
+        <label>@art.Description</label>
         @{var imagePath = returnImage(art.ImagePath);}
         <p><img src = @imagePath style="width:400px; height:250px"/></p>
         <form action="/Album/DeleteArt" method="post">
             <input type="hidden" name="id" value=@art.ArtId />
-            <input type="submit" value="Delete Image" />
+            <input type="submit" value="Delete game" />
         </form>
-        <hr />
     </div>
+    <hr/>
 }
-
-<form action="/Album/AddNewImage" method="post" enctype="multipart/form-data">
+<hr />
+<form action="/Album/AddNewImage" method="post" enctype="multipart/form-data" style="display:flex; flex-direction:column; width:50%; border: 1px solid black; border-radius:15px; padding:15px">
     <input type="hidden" name="id" value=@album.AlbumId />
     <input type="file" name="ImagePath"/>
+    <label>Name: </label>
+    <input type="text" name="name"/>
+    <label>Description: </label>
+    <input type="text" name="description"/>
+    <br>
     <input type="submit" value="Add Image" />
 </form>

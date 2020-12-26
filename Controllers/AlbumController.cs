@@ -37,12 +37,14 @@ namespace lab1_2.Controllers
             return View(artsData);
         }
         [HttpPost]
-        public IActionResult AddNewImage(int id, IFormFile ImagePath)
+        public IActionResult AddNewImage(int id, IFormFile ImagePath, string name, string description)
         {
             var art = new Art();
             Console.WriteLine(ImagePath);
             art.ImagePath = ImagePath.FileName;
             art.AlbumId = id;
+            art.Name = name;
+            art.Description = description;
 
             string path = "/images/" + ImagePath.FileName;
             using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))

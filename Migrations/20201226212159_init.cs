@@ -26,6 +26,8 @@ namespace lab1_2.Migrations
                     ArtId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     ImagePath = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
                     AlbumId = table.Column<int>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false)
                 },

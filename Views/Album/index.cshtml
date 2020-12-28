@@ -1,16 +1,19 @@
 @model IEnumerable<ArtsNamespace.Models.Album>
-<form action="Album/GetById" method="get" style="display:flex; flex-direction:column; width:50%;">
-    <select name="id">
-    @foreach (var album in Model)
-    {
-        <option value=@album.AlbumId> @album.Name</option>
-    }
-    </select>
+<div style="width:50%; display:flex; flex-direction:column; justify-content:center; align-items: center; border-radius:20px; border: solid 1px gray; box-shadow: 0 0 10px gray;">
     <br>
-    <input type="submit" value="Choose category" />
-</form>
-<hr />
-<form action="Album/AddForm" method="get">
-    <input type="submit" value="Add category" />
-</form>
-
+    <form action="Album/GetById" method="get" style="display:flex; flex-direction:column; width:50%;">
+        <select name="id" class="form-control">
+        @foreach (var album in Model)
+        {
+            <option value=@album.AlbumId> @album.Name</option>
+        }
+        </select>
+        <br>
+        <input type="submit" value="Виберіть категорію" class="btn btn-secondary"/>
+    </form>
+    <br>
+    <form action="Album/AddForm" method="get">
+        <input type="submit" value="Створити нову категорію" class="btn btn-primary"/>
+    </form>
+    <br>
+</div>

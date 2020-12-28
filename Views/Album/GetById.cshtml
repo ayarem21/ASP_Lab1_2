@@ -9,30 +9,34 @@
         return imagePath;
     }
 }
+<div style="width:50%; display:flex; flex-direction:column; justify-content:center; align-items: center; border-radius:20px; border: solid 1px gray; box-shadow: 0 0 10px gray;">
 
-<h1> @album.Name </h1>
-@foreach (var art in Model)
-{
-    <div>
-        <label style="font-weight: bold;">@art.Name:</label>
-        <label>@art.Description</label>
-        @{var imagePath = returnImage(art.ImagePath);}
-        <p><img src = @imagePath style="width:400px; height:250px"/></p>
-        <form action="/Album/DeleteArt" method="post">
-            <input type="hidden" name="id" value=@art.ArtId />
-            <input type="submit" value="Delete game" />
-        </form>
-    </div>
-    <hr/>
-}
-<hr />
-<form action="/Album/AddNewImage" method="post" enctype="multipart/form-data" style="display:flex; flex-direction:column; width:50%; border: 1px solid black; border-radius:15px; padding:15px">
-    <input type="hidden" name="id" value=@album.AlbumId />
-    <input type="file" name="ImagePath"/>
-    <label>Name: </label>
-    <input type="text" name="name"/>
-    <label>Description: </label>
-    <input type="text" name="description"/>
+    <h1> @album.Name </h1>
+    @foreach (var art in Model)
+    {
+        <div>
+            <label style="font-weight: bold;">@art.Name:</label>
+            <label>@art.Description</label>
+            @{var imagePath = returnImage(art.ImagePath);}
+            <p><img src = @imagePath style="width:400px; height:250px"/></p>
+            <form action="/Album/DeleteArt" method="post">
+                <input type="hidden" name="id" value=@art.ArtId />
+                <input type="submit" value="Видалити зображення" class="btn btn-danger"/>
+            </form>
+        </div>
+        <hr/>
+    }
     <br>
-    <input type="submit" value="Add Image" />
-</form>
+    <form action="/Album/AddNewImage" method="post" enctype="multipart/form-data" style="display:flex; flex-direction:column; width:50%; border-top: 1px solid gray;">
+        <br>
+        <input type="hidden" name="id" value=@album.AlbumId />
+        <input type="file" name="ImagePath"/>
+        <br>
+        <input type="text" name="name" placeholder="Назва:" class="form-control"/>
+        <br>
+        <input type="text" name="description" placeholder="Опис:" class="form-control"/>
+        <br>
+        <input type="submit" value="Додати зображення" class="btn btn-secondary"/>
+    </form>
+    <br>
+</div>

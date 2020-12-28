@@ -9,24 +9,27 @@
         return imagePath;
     }
 }
+<div style="width:50%; display:flex; flex-direction:column; justify-content:center; align-items: center; border-radius:20px; border: solid 1px gray; box-shadow: 0 0 10px gray;">
+    <br>
+    <h1> @album.Name </h1>
+    @foreach (var art in Model)
+    {
+        <div>
+            @Html.Label(art.ImagePath, art.ImagePath)
+            @{var imagePath = returnImage(art.ImagePath);}
+            <p><img src = @imagePath style="width:400px; height:250px"/></p>
+            <form action="/Album/DeleteArt" method="post">
+                <input type="hidden" name="id" value=@art.ArtId />
+                <input type="submit" value="Delete Image" class="btn btn-danger"/>
+            </form>
+            <hr />
+        </div>
+    }
 
-<h1> @album.Name </h1>
-@foreach (var art in Model)
-{
-    <div>
-        @Html.Label(art.ImagePath, art.ImagePath)
-        @{var imagePath = returnImage(art.ImagePath);}
-        <p><img src = @imagePath style="width:400px; height:250px"/></p>
-        <form action="/Album/DeleteArt" method="post">
-            <input type="hidden" name="id" value=@art.ArtId />
-            <input type="submit" value="Delete Image" />
-        </form>
-        <hr />
-    </div>
-}
-
-<form action="/Album/AddNewImage" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id" value=@album.AlbumId />
-    <input type="file" name="ImagePath"/>
-    <input type="submit" value="Add Image" />
-</form>
+    <form action="/Album/AddNewImage" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value=@album.AlbumId />
+        <input type="file" name="ImagePath" id="file-upload"/>
+        <input type="submit" value="Add Image" class="btn btn-secondary"/>
+    </form>
+    <br>
+</div>

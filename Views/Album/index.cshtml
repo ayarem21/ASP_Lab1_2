@@ -1,13 +1,15 @@
 @model IEnumerable<ArtsNamespace.Models.Album>
-
-@foreach (var album in Model)
-{
-    <div>
-        @Html.ActionLink(album.Name, "GetById", "Album", new { id = album.AlbumId});
-        <hr />
-    </div>
-}
-<form action="Album/AddForm" method="get">
-    <input type="submit" value="Add album" />
-</form>
-
+<div style="width:30%; display:flex; flex-direction:column; justify-content:center; align-items: center; border-radius:20px; border: solid 1px gray; box-shadow: 0 0 10px gray;">
+    <br>
+    @foreach (var album in Model)
+    {
+        <div style="color:gray;">
+            @Html.ActionLink(album.Name, "GetById", "Album", new { id = album.AlbumId});
+        </div>
+        <br>
+    }
+    <form action="Album/AddForm" method="get">
+        <input type="submit" value="Додати альбом" class="btn btn-secondary stretched-link" />
+    </form>
+    <br>
+</div>
